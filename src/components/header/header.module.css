@@ -1,0 +1,14 @@
+.header{
+    display:flex;
+    border:1px solid green;
+    justify-content: space-between;
+
+}
+
+.header__title{
+    border:1px solid blue;
+}
+
+.header__contacts{
+    border:1px solid brown;
+}

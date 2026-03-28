@@ -1,0 +1,60 @@
+.placeholder{
+    display:flex;
+    flex-direction: column;
+    row-gap: 24px;
+    padding:24px;
+}
+.placeholderMessage{
+    /* border:1px solid green; */
+}
+
+.placeholderMessage__title{
+    font-size: 24px;
+    margin-bottom: 12px;
+}
+.placeholderMessage__text{
+    
+}
+
+.placeholderMessage__call{
+   display:flex;
+   align-items: center;
+   column-gap: 24px;
+}
+
+.socnetsVk{
+    background: url('/icons/vk-svg.svg') center/contain no-repeat;
+}
+
+.socnetsVkLink{
+    display:flex;
+    width:24px;
+    height: 24px;
+    /* border:1px solid blue; */
+    
+}
+
+.listServices{
+    display:flex;
+    flex-direction: column;
+    column-gap: 12px !important;
+    /* border:1px solid red; */
+    list-style-type:none;
+    padding-left: 24px;
+}
+
+.listServices>li{
+    position:relative;
+    padding-bottom: 12px;
+}
+
+.listServices>li::before{
+    position:absolute;
+    content: '';
+    left:-24px;
+    top:0;
+    width:18px;
+    height:18px;
+    /* border:1px solid red; */
+    background: url('/icons/check-mark.svg') center/contain no-repeat;
+}

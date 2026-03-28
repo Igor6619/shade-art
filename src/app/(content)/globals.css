@@ -1,0 +1,105 @@
+:root {
+  --background: #ffffff;
+  --main-color: #000000;
+}
+
+@font-face {
+  font-family: 'PlaypenSans';
+  src: url('/fonts/PlaypenSans-Thin.woff');
+  
+}
+
+@font-face {
+  font-family: 'Roboto';
+  src: url('/fonts/Roboto-Thin.woff');
+  
+}
+
+@font-face {
+  font-family: 'RobotoItalic';
+  src: url('/fonts/Roboto-ThinItalic.woff');
+  
+}
+
+
+
+
+body {
+
+  /* border:1px solid red; */
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  color: var(--foreground);
+  background: var(--background);
+  overflow-x: hidden;
+  font-family: 'Roboto';
+  
+ 
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+main{
+  display:flex;
+  /* border:10px solid red; */
+  flex-grow: 1;
+  justify-content: center;
+
+}
+
+main>.container{
+  display:flex;
+  align-items: center;
+}
+.container{
+    /* border:1px solid blue; */
+    min-height:100%;
+    margin:0px auto;
+    margin-bottom:0;
+}
+
+@media (min-width: 576px) {
+	.container{
+        padding: 0px 24px;
+        width: 540px;
+        
+    }
+}
+
+@media (min-width: 768px) {
+	.container{
+        padding: 0px 24px;
+        width: 720px;
+        
+    }
+}
+
+@media (min-width: 992px) {
+	.container{
+        padding: 0px 24px;
+        width: 960px;
+    }
+}
+
+@media (min-width: 1200px) {
+	.container{
+        padding: 0px 24px;
+        width: 1140px;
+    }
+}
+
+@media (min-width: 1400px) {
+	.container{
+
+        padding: 0px 32px;
+        width: 1320px;
+    }
+}
+
+
+
