@@ -1,5 +1,7 @@
+import styles from './footer.module.css'
+
 export default function Footer(){
     return (
-        <div></div>
+        <div>Подвал страницы</div>
     )
 }

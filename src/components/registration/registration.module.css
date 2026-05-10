@@ -1,0 +1,29 @@
+.registrationForm{
+    display:flex;
+    flex-direction: column;
+    row-gap: 12px;
+    width:100%;
+}
+
+.formField{
+    padding:6px;
+    border-radius: 6px;
+}
+
+.sectionFormFields{
+    padding:12px;
+    display:flex;
+    flex-direction: column;
+    row-gap: 12px;
+}
+
+.sectionBtns{
+    padding:12px;
+    column-gap: 24px;
+    display:flex;
+    border:1px solid green;
+}
+
+.sectionBtnsItem{
+    flex-grow: 1;
+}

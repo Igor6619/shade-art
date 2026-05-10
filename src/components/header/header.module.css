@@ -1,6 +1,6 @@
 .header{
     display:flex;
-    border:1px solid green;
+    /* border:1px solid green; */
     justify-content: space-between;
 
 }
@@ -11,4 +11,75 @@
 
 .header__contacts{
     border:1px solid brown;
+}
+
+.header__input{
+    position:relative;
+    /* border:1px solid red; */
+}
+
+.inputAsideRight{
+   display:flex;
+   flex-direction: column;
+   z-index: 100;
+   position:absolute;
+   top:0;
+   right:0;
+   background-color: rgb(253, 3, 3);
+   opacity: 1; 
+   min-height: 100vh;
+   width: 500px;
+   overflow-x: hidden;
+   transition: width .5s ease-in-out;
+
+}
+
+.inputAsideRight_hidden{
+    width:0;
+}
+
+.asideContent{
+    flex-shrink: 0;
+    width:500px;
+    height:100%;
+}
+
+.sectionBtns{
+    padding:12px;
+    margin-top: 100px;
+    column-gap: 24px;
+    display:flex;
+    border:1px solid green;
+}
+
+.sectionBtnsItem{
+    display:flex;
+    justify-content: center;
+    flex-grow: 1;
+    border:1px solid var(--light-main-color);
+    border-radius:6px;
+    padding: 6px;
+    cursor:pointer;
+}
+
+.sectionBtnsItemActive{
+    background-color: blue;
+    color: #fff;
+}
+
+.btnInputAsideRightHide{
+    position:absolute;
+    left:24px;
+    top:24px;
+    width:36px;
+    height:36px;
+    cursor:pointer;
+    background: url('/icons/close.svg') center/contain no-repeat;
+}
+
+.sectionForms{
+    width:100%;
+    display:flex;
+    flex-direction: column;
+    flex-shrink: 0;
 }

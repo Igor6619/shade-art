@@ -1,0 +1,49 @@
+.loginForm{
+    display:flex;
+    flex-direction: column;
+    row-gap: 12px;
+    width:100%;
+}
+
+.formField{
+    padding:6px;
+    border-radius: 6px;
+}
+
+.sectionFormFields{
+    padding:12px;
+    display:flex;
+    flex-direction: column;
+    row-gap: 12px;
+}
+
+.sectionBtns{
+    padding:12px;
+    column-gap: 24px;
+    display:flex;
+    border:1px solid green;
+}
+
+.sectionBtnsItem{
+    flex-grow: 1;
+}
+
+.socnetsAuth{
+    display:flex;
+    align-items: center;
+    column-gap: 48px;
+}
+
+.socnetsAuthLinks{
+    display:flex;
+}
+
+.socnetsAuthLink{
+    height:36px;
+    width: 36px;
+    cursor:pointer;
+}
+
+.socnetsAuthLinkVk{
+    background: url('/icons/vk-svg.svg') center/contain no-repeat;
+}
