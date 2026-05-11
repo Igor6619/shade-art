@@ -49,7 +49,7 @@ export default function LoginForm(){
         <div className={styles.socnetsAuth}>
             <div className="socnetsAuthTitle">Войди через:</div>
             <div className={styles.socnetsAuthLinks}>
-                <div className={`${styles.socnetsAuthLink} ${styles.socnetsAuthLinkVk}`}></div>
+                <a href="/api/auth/vk" className={`${styles.socnetsAuthLink} ${styles.socnetsAuthLinkVk}`}></a>
             </div>
         </div>
     </form>

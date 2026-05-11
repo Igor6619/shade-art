@@ -21,9 +21,9 @@ export default function RegistrationForm(){
         let formData = new FormData();  
         formData.append('login', login);
         formData.append('password', password);
-
+        console.log('!!!!!!!!!!!!!!!: ', process.env.NEXT_PUBLIC_EXPRESS_API_REGISTRATION_URL )
         try {
-            const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/auth/registration`, {
+            const response = await fetch(`${process.env.NEXT_PUBLIC_EXPRESS_API_REGISTRATION_URL}`, {
                 method: 'POST',
                 body: formData  
             });
@@ -38,14 +38,14 @@ export default function RegistrationForm(){
     
     <form className={styles.registrationForm}>
         <section className={styles.sectionFormFields}>
-            <input className={styles.formField} type="text" name="login" onChange={(e)=>setLogin(e.target.value)} placeholder="Email/Tel" required disabled={loading}/>
+            <input className={styles.formField} type="text" name="login" onChange={(e)=>setLogin(e.target.value)} placeholder="Email" required disabled={loading}/>
             <input className={styles.formField} type="password" name="password" onChange={(e)=>setPassword(e.target.value)} placeholder="Пароль" required disabled={loading}/>
             <input className={styles.formField} type="password" name="confirmation_password" onChange={(e)=>setPassword(e.target.value)} placeholder="Пароль ещё раз" required disabled={loading}/>
         </section>
         
         <div className={styles.sectionBtns}>
             <button className={`${styles.formField} ${styles.sectionBtnsItem}`} type="submit" onClick={doRegistration} disabled={loading}>Зарегистрироваться</button>
-            <button className={`${styles.formField} ${styles.sectionBtnsItem}`} disabled={loading}>Отмена</button>
+            <button className={`${styles.formField} ${styles.sectionBtnsItem}`} type="reset" disabled={loading}>Отмена</button>
         </div>
        
     </form>

@@ -2,4 +2,16 @@
   --background: #ffffff;
   --main-color: #000000;
 }
+*{
+  margin:0;
+  box-sizing: border-box;
+}
+.adminPage{
+  display:flex;
+}
 
+.adminPageAsideMenu{
+  min-width: 400px;
+  min-height: 100vh;
+  border:1px solid red;
+}

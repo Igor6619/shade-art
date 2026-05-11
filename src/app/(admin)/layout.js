@@ -1,15 +1,18 @@
 'use client';
+
+import Menu from "@/components/admin/menu/menu.jsx";
 import "./globals_admin.css";
-import Menu from '@/components/admin/menu/menu.jsx'
+
+
 
 
 export default function RootLayout({ children, header, footer }) {
   return (
     <html lang="en" >
       <body>
-          <main className="admin-page">
-            <aside>
-              <Menu/>
+          <main className="adminPage">
+            <aside className="adminPageAsideMenu">
+              <Menu />
             </aside>
             <div>
                {children}
