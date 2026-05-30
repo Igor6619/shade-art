@@ -22,7 +22,7 @@ export default function LoginForm(){
         formData.append('password', password);
 
         try {
-            const response = await fetch(`/api/auth/login`, {
+            const response = await fetch(`${process.env.NEXT_PUBLIC_EXPRESS_API_LOGIN_URL}`, {
                 method: 'POST',
                 body: formData  
             });
@@ -40,11 +40,24 @@ export default function LoginForm(){
     
     <form className={styles.loginForm}>
         <section className={styles.sectionFormFields}>
-            <input className={`${styles.formField} ${styles.sectionFormFieldsItem}`} type="text" name="login" onChange={(e)=>setLogin(e.target.value)} placeholder="Email/Tel" required disabled={loading}/>
-            <input className={`${styles.formField} ${styles.sectionFormFieldsItem}`} type="password" name="password" onChange={(e)=>setPassword(e.target.value)} placeholder="Password" required disabled={loading}/>
+            <input className={`${styles.formField} ${styles.sectionFormFieldsItem}`} 
+                   type="text" name="login" 
+                   onChange={(e)=>setLogin(e.target.value)} placeholder="Email/Tel" 
+                   required 
+                   disabled={loading}/>
+            <input className={`${styles.formField} ${styles.sectionFormFieldsItem}`} 
+                   type="password" 
+                   name="password" 
+                   onChange={(e)=>setPassword(e.target.value)} 
+                   placeholder="Password" 
+                   required 
+                   disabled={loading}/>
         </section>  
         <section className={styles.sectionBtns}>
-            <button className={`${styles.formField} ${styles.sectionBtnsItem}`} type="submit" onClick={doLogin} disabled={loading}>Войти</button>
+            <button className={`${styles.formField} ${styles.sectionBtnsItem}`} 
+                    type="submit" 
+                    onClick={doLogin} 
+                    disabled={loading}>Войти</button>
         </section>
         
         <div className={styles.socnetsAuth}>
