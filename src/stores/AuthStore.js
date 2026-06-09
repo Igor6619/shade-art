@@ -1,13 +1,13 @@
-import { create } from 'zustand';
-
-
-export const useAuthStore = create((set) => ({
+export const authStore = (set, get, api) => ({
   // Начальное состояние
   user:null,
   isLogined: false,
   isLogining: false,
   error: null,
-
+  // Новые действия для инициализации
+  setUser: (user) => set({ user }),
+  setIsLogined: (isLogined) => set({ isLogined }),
+  
 
   // Действия — обычные функции
   login: async (login, password)=>{
@@ -23,7 +23,7 @@ export const useAuthStore = create((set) => ({
         credentials: 'include', // Важно: отправляем/получаем cookies
       });
       const data = await response.json();
-      // 3. Обработка ошибок бэкенда
+      // 3. Обработка ошибок бэкенда--
       if (!response.ok) {
         throw new Error(data.message || 'Ошибка входа');
       }
@@ -49,7 +49,7 @@ export const useAuthStore = create((set) => ({
   logout: async () => {
     set({ isLogining: true });
     try {
-      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/auth/logout`, {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_EXPRESS_API_LOGOUT_URL}`, {
         method: 'POST',
         credentials: 'include',
       });
@@ -57,7 +57,7 @@ export const useAuthStore = create((set) => ({
       // Бэкенд удаляет cookie с токеном
       if (response.ok) {
         // Полная замена состояния при логауте (очищаем всё)
-        set({ user: null, isLogined: false, isLogining: false, error: null }, true);
+        set({ user: null, isLogined: false, isLogining: false, error: null });
         return true;
       }
       throw new Error('Ошибка при выходе');
@@ -69,5 +69,5 @@ export const useAuthStore = create((set) => ({
 
   // Вспомогательное действие: очистить ошибку
   clearError: () => set({ error: null }),
-}));
+});
 

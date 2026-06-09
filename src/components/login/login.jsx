@@ -2,7 +2,8 @@
 
 import { useState } from "react";
 import styles from './login.module.css'
-import { useAuthStore } from "@/stores/AuthStore";
+import { useStore } from "@/stores/index.js";
+import { useRouter } from "next/navigation"; // 1. Импортируем useRouter
 
 
 export default function LoginForm(){
@@ -11,16 +12,37 @@ export default function LoginForm(){
     let [password, setPassword] = useState();
     const [error, setError] = useState('');
     const [loading, setLoading] = useState(false);
-    let authLoginAction = useAuthStore((state) => state.login);
+    let authLoginAction = useStore((state) => state.login);
+    const router = useRouter();
 
     async function doLogin(e){
         console.log('входим!!!')
         e.preventDefault();
         setError('');
         setLoading(true);
-       
+       try{
         await authLoginAction(login, password);
-        setLoading(false);
+        // Очищаем поля формы
+        setLogin('');
+        setPassword('');
+        // Перенаправляем на главную страницу
+        // Используем replace вместо push, чтобы пользователь не мог 
+        // нажать кнопку "Назад" в браузере и вернуться на страницу логина
+        router.replace('/'); 
+       } catch(err){
+            // Обрабатываем ошибку, если логин/пароль неверные или сеть недоступна
+            console.error("Ошибка входа:", err);
+            setError('Неверный логин или пароль'); 
+            // Пароль можно очистить и при ошибке для безопасности
+            setPassword('');
+       } finally {
+            // 6. Снимаем флаг загрузки в любом случае (успех или ошибка)
+            setLoading(false);
+        }
+        
+        
+
+
         
     }
 

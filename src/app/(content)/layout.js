@@ -1,14 +1,21 @@
 import "./globals.css";
+import { getMe } from "@/utils/jwt/function.js";
+import AuthInitializer from  '@/components/auth/auth-initializer.jsx'
 
 export const metadata = {
   title: "Искусство затенения",
   description: "Шьем шторы по индивидуальным заказам.  А так же домашний текстиль. Услуги стирки штор, химчистки штор, чистка мебели.",
 };
 
-export default function RootLayout({ children, header, footer }) {
+export default async function RootLayout({ children, header, footer }) {
+  
+  const user = await getMe();
+ 
   return (
-    <html lang="en" >
+    <html lang="ru" >
+      
       <body>
+          <AuthInitializer initialUser={user}/>
           <header>
             <div className='container'>
               {header}
