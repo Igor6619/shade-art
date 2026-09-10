@@ -34,7 +34,7 @@ export default function RegistrationForm(){
         formData.append('confirmation_password', confirmPassword)
         console.log('!!!!!!!!!!!!!!!: ', process.env.NEXT_PUBLIC_EXPRESS_API_REGISTRATION_URL )
         try {
-            const response = await fetch(`${process.env.NEXT_PUBLIC_EXPRESS_API_REGISTRATION_URL}`, {
+            const response = await fetch(`${process.env.NEXT_PUBLIC_EXPRESS_BASE_URL}/${process.env.NEXT_PUBLIC_EXPRESS_API_REGISTRATION_URL}`, {
                 method: 'POST',
                 body: formData  
             });

@@ -1,6 +1,8 @@
 :root {
   --background: #ffffff;
   --main-color: #000000;
+  --font-size-subtitle: 24px;
+  --color-error:#ff0000;
 }
 *{
   margin:0;
@@ -14,4 +16,30 @@
   min-width: 400px;
   min-height: 100vh;
   border:1px solid red;
+}
+
+.modalTitle{
+  
+  font-size: var(--font-size-subtitle);
+}
+
+.modalContent{
+  display:flex;
+  flex-direction: column;
+  row-gap: 24px;
+  border:1px solid green;
+}
+
+.formField{
+  padding:6px;
+}
+
+.sectionFormFieldsInColumn{
+  display: flex;
+  flex-direction: column;
+  row-gap: 12px;
+}
+
+.sectionErrors{
+  color:var(--color-error);
 }

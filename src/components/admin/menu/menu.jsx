@@ -20,13 +20,33 @@ export default function Menu(){
                                     Разновидности штор
                                 </Link>
                             </li>
-                            <li>Портфолио</li>
+
+                            <li>
+                            <Link href="/admin/services/shade_making/portfolio/">
+                                Портфолио
+                            </Link>
+                            </li>
                         </ul>
                     </li>
                     <li>
                         Подбор ткани
                         <ul>
-                            <li>Разновидности ткани</li>
+                            <li>
+                                <Link href="/admin/services/shade_material_selection/light_filtering/">
+                                    Цвето пропускная способность 
+                                </Link>
+                            </li>
+                            <li>
+                                <Link href="/admin/services/shade_material_selection/shade_material_types/">
+                                    Разновидность материала 
+                                </Link>
+                            </li>
+                            <li>
+                                <Link href="/admin/services/shade_material_selection/shade_material_types/">
+                                    Каталог тканей
+                                </Link>
+                            </li>
+                            
                         </ul>
                     </li>
                 </ul>
