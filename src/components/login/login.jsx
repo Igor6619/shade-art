@@ -8,8 +8,8 @@ import { useRouter } from "next/navigation"; // 1. Импортируем useRou
 
 export default function LoginForm(){
 
-    let [login, setLogin] = useState();
-    let [password, setPassword] = useState();
+    let [login, setLogin] = useState('');
+    let [password, setPassword] = useState('');
     const [error, setError] = useState('');
     const [loading, setLoading] = useState(false);
     let authLoginAction = useStore((state) => state.login);
@@ -20,15 +20,23 @@ export default function LoginForm(){
         e.preventDefault();
         setError('');
         setLoading(true);
+        // Валидация перед отправкой
+        if (!login.trim() || !password.trim()) {
+            setError("Пожалуйста, заполните все поля");
+            setLoading(false);
+            return;
+        }
        try{
+        console.log('до!!!!!')
         await authLoginAction(login, password);
+        console.log('после!!!!!!!!!!!')
         // Очищаем поля формы
         setLogin('');
         setPassword('');
         // Перенаправляем на главную страницу
         // Используем replace вместо push, чтобы пользователь не мог 
         // нажать кнопку "Назад" в браузере и вернуться на страницу логина
-        router.replace('/'); 
+        window.location.reload(); 
        } catch(err){
             // Обрабатываем ошибку, если логин/пароль неверные или сеть недоступна
             console.error("Ошибка входа:", err);
@@ -48,16 +56,19 @@ export default function LoginForm(){
 
     return <>
     
-        <form className={styles.loginForm}>
+        <form className={styles.loginForm} onSubmit={doLogin}>
             <section className={styles.sectionFormFields}>
                 <input className={`${styles.formField} ${styles.sectionFormFieldsItem}`} 
-                    type="text" name="login" 
+                    type="text" 
+                    name="login" 
+                    value={login}
                     onChange={(e)=>setLogin(e.target.value)} placeholder="Login" 
                     required 
                     disabled={loading}/>
                 <input className={`${styles.formField} ${styles.sectionFormFieldsItem}`} 
                     type="password" 
-                    name="password" 
+                    name="password"
+                    value={password} 
                     onChange={(e)=>setPassword(e.target.value)} 
                     placeholder="Password" 
                     required 
@@ -66,7 +77,7 @@ export default function LoginForm(){
             <section className={styles.sectionBtns}>
                 <button className={`${styles.formField} ${styles.sectionBtnsItem}`} 
                         type="submit" 
-                        onClick={doLogin} 
+                         
                         disabled={loading}>Войти</button>
             </section>
             

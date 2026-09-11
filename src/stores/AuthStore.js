@@ -16,7 +16,7 @@ export const authStore = (set, get, api) => ({
     
     try {
       // 2. Fetch-запрос к Express-бэкенду
-      const response = await fetch(`${process.env.NEXT_PUBLIC_EXPRESS_BASE_URL}/${process.env.NEXT_PUBLIC_EXPRESS_API_LOGIN_URL}`, {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/${process.env.NEXT_PUBLIC_API_LOGIN_URL}`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' }, // ⚠️ JSON
         body: JSON.stringify({ login: login, password: password }),
@@ -37,11 +37,15 @@ export const authStore = (set, get, api) => ({
       });
 
     } catch (err){
+      console.log('Ошибка входа 22222222222222222')
         // 5. Обработка сетевых/других ошибок
       set({
         error: err.message || 'Не удалось подключиться к серверу',
         isLogining: false,
       });
+      // ИСПРАВЛЕНО: Пробрасываем ошибку дальше в LoginForm, 
+    // чтобы там сработал catch и поля формы НЕ очищались
+    throw err; 
     }
   },
 

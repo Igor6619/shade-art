@@ -11,15 +11,16 @@ export function getSecretKey() {
 
 export async function getMe(){
   const cookieStore = await cookies();
+  const cookieName = process.env.AUTH_COOKIE_NAME || 'access_token';
   // Читаем токен напрямую из HttpOnly куки
-  const token = cookieStore.get('jwt')?.value;
+  const token = cookieStore.get(cookieName)?.value;
   // Если токена нет — пользователь гость
   if (!token) {
 
     const payload = {
-      _id: null,
+      user_id: null,
       role: false,
-      fullname: 'Гость'
+      first_name: 'Гость'
     }
     return payload
   }
@@ -27,17 +28,17 @@ export async function getMe(){
   try {
     const { payload } = await jwtVerify(token, getSecretKey());
     return {
-      _id: payload.sub || payload._id,
+      user_id: payload.user_id || payload._id,
       role: payload.role || roles.guest,
-      fullname: payload.fullname
+      first_name: payload.first_name
     };
   } catch (error) {
     // Токен невалиден или протух — возвращаем гостя
     console.log('Токен невалиден:', error.message);
     return {
-      _id: null,
+      user_id: null,
       role: false,
-      fullname: 'Гость'
+      first_name: 'Гость'
     };
   }
 

@@ -1,8 +1,8 @@
 export const roles = {
-    guest: 1,
-    user: 2,
-    moderator: 3,
-    admin: 100
+    guest: 'GUEST',
+    user: 'USER',
+    moderator: 'MODERATOR',
+    admin: 'ADMIN'
 }
 
 // export const menu={
