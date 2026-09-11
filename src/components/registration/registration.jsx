@@ -28,15 +28,21 @@ export default function RegistrationForm(){
         }
         setLoading(true);
 
-        let formData = new FormData();  
-        formData.append('login', login);
-        formData.append('password', password);
-        formData.append('confirmation_password', confirmPassword)
-        console.log('!!!!!!!!!!!!!!!: ', process.env.NEXT_PUBLIC_EXPRESS_API_REGISTRATION_URL )
+        // let formData = new FormData();  
+        // formData.append('login', login);
+        // formData.append('password', password);
+        let requestData = {
+            'login': login,
+            'password': password
+        }
+        console.log('!!!!!!!!!!!!!!!: ', process.env.NEXT_PUBLIC_API_REGISTRATION_URL )
         try {
-            const response = await fetch(`${process.env.NEXT_PUBLIC_EXPRESS_BASE_URL}/${process.env.NEXT_PUBLIC_EXPRESS_API_REGISTRATION_URL}`, {
+            const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/${process.env.NEXT_PUBLIC_API_REGISTRATION_URL}`, {
                 method: 'POST',
-                body: formData  
+                headers: {
+                    'Content-Type': 'application/json' 
+                },
+                body: JSON.stringify(requestData)  
             });
             const data = await response.json();
             // Проверяем статус ответа
