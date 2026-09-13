@@ -1,5 +1,5 @@
 import "./globals.css";
-import { getMe } from "@/utils/jwt/function.js";
+import { getMe } from "@/utils/functions.js";
 import AuthInitializer from  '@/components/auth/auth-initializer.jsx'
 
 export const metadata = {

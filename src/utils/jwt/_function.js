@@ -11,7 +11,9 @@ export function getSecretKey() {
 
 export async function getMe(){
   const cookieStore = await cookies();
-  const cookieName = process.env.AUTH_COOKIE_NAME || 'access_token';
+  const cookieName = process.env.SESSION_NAME_COOKIE || 'session_token';
+  
+  
   // Читаем токен напрямую из HttpOnly куки
   const token = cookieStore.get(cookieName)?.value;
   // Если токена нет — пользователь гость

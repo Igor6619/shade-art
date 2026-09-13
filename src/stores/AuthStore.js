@@ -22,6 +22,7 @@ export const authStore = (set, get, api) => ({
         body: JSON.stringify({ login: login, password: password }),
         credentials: 'include', // Важно: отправляем/получаем cookies
       });
+      console.log('дщпштшься!!!')
       const data = await response.json();
       // 3. Обработка ошибок бэкенда--
       if (!response.ok) {

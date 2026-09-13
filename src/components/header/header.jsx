@@ -1,15 +1,15 @@
 import InputSection from '@/components/header/input-section.jsx'
 import UserSection from '@/components/header/user-section.jsx';
 import styles from './header.module.css'
-import { getMe } from '@/utils/jwt/function.js';
-
+import { getMe } from '@/utils/functions.js';
+// import { useStore } from '@/stores/index.js';
 
 
 
 export default async function Header(){
     
-    const user = await getMe();
-    const isLoggedIn = user.role !== false;
+    const user = await getMe()
+    const isLoggedIn = user !== null && user.id !== 'null';
     
     
     
