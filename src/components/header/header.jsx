@@ -8,7 +8,8 @@ import { getMe } from '@/utils/functions.js';
 
 export default async function Header(){
     
-    const user = await getMe()
+    const user = await getMe();
+    
     const isLoggedIn = user !== null && user.id !== 'null';
     
     

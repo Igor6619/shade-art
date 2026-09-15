@@ -22,7 +22,7 @@ export const authStore = (set, get, api) => ({
         body: JSON.stringify({ login: login, password: password }),
         credentials: 'include', // Важно: отправляем/получаем cookies
       });
-      console.log('дщпштшься!!!')
+      
       const data = await response.json();
       // 3. Обработка ошибок бэкенда--
       if (!response.ok) {
@@ -31,7 +31,7 @@ export const authStore = (set, get, api) => ({
       // Бэкенд уже установил httpOnly cookie с JWT через Set-Cookie заголовок.
       // Обновляем состояние: пользователь вошёл (shallow merge)
       set({
-        user: data.user,      // { id, name, роли... }
+        user: data.user,      // { id, name, роли... } 
         isLogined: true,
         isLogining: false,
         error: null,
@@ -54,7 +54,7 @@ export const authStore = (set, get, api) => ({
   logout: async () => {
     set({ isLogining: true });
     try {
-      const response = await fetch(`${process.env.NEXT_PUBLIC_EXPRESS_BASE_URL}/${process.env.NEXT_PUBLIC_EXPRESS_API_LOGOUT_URL}`, {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/${process.env.NEXT_PUBLIC_API_LOGOUT_URL}`, {
         method: 'POST',
         credentials: 'include',
       });

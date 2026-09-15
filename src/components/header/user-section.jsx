@@ -13,7 +13,7 @@ export default function UserSection({user}){
 
 
     </div>
-       <div className={styles.inputBtn} onClick={() => setVisibleUserAsideRight(true)}>Здравствуйте, {user.first_name}!</div>
+       <div className={styles.inputBtn} onClick={() => setVisibleUserAsideRight(true)}>Здравствуйте, {user.name}!</div>
        <UserAsideRight visible={visibleUserAsideRight} hideUserAsideRight={() => setVisibleUserAsideRight(false)}  user={user}/> 
     </>
 }
