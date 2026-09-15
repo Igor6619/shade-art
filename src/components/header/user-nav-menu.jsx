@@ -9,6 +9,7 @@ export default function UserNavMenu({}){
     const user = useStore((state)=>state.user)
     const logout = useStore((state)=>state.logout)
     const getProfile = useStore((state)=>state.getProfile)
+    const profileData = useStore((state)=>state.profileData) 
 
 
     const handleLogout = async ()=>{
@@ -28,12 +29,12 @@ export default function UserNavMenu({}){
             console.log('Получаем профиль пользователя')
             let profile = await getProfile();
 
-            if (!profile.ok){
-                // Опционально: редирект после успешного выхода
+            if (!profile){
                 window.location.href = '/';
             } else {
-                let profileData = await profile.json();
-                console.log('profileData: ', profileData)
+                // здесь внутри метода именно (let profile = await getProfile(); 
+                // для актуальных значений... )
+                console.log('profileData: ', profile)
             }
 
         } catch (error) {

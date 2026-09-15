@@ -12,7 +12,7 @@ export const profileStore = (set, get, api) => ({
                 profileError: null 
         });
         try {
-            // 2. Достаем user_id из соседнего authStore слайса через get()
+            // 2. Достаем user_id из Store  через get()
             // Добавляем опциональную цепочку ?. на случай, если пользователь еще не авторизован
             const userId = get().user?.id; 
             
@@ -20,15 +20,15 @@ export const profileStore = (set, get, api) => ({
                 throw new Error("Пользователь не авторизован или ID отсутствует");
             }
             
-            const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/${process.env.NEXT_PUBLIC_API_PROFILE}?user_id=${userId}`);
+            const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/${process.env.NEXT_PUBLIC_API_PROFILE}/${userId}`);
             if (response.ok) {
-                    // Парсим ОДИН раз прямо здесь, никакой .clone() не нужен
-                    const data = await response.json(); 
+                    const data = await response.json();
                     set({ profileData: data, profileLoading: false });
-                    return true; // Возвращаем статус успеха
+                    // console.log('profileData: ', profileData)
+                    return data; // Возвращаем статус успеха
             } else {
                 set({ profileLoading: false, profileError: `Ошибка: ${response.status}` });
-                return false; // Запрос не удался
+                return null; // Запрос не удался
             }
 
         } catch (error){
